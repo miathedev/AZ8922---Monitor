@@ -2,7 +2,7 @@
   "name": "az8922-monitor",
   "version": "1.0.0",
   "description": "Web-based sound level meter monitor for AZ8922",
-  "homepage": "https://yourusername.github.io/AZ8922---Monitor",
+  "homepage": "https://miathedev.github.io/AZ8922---Monitor",
   "private": true,
   "dependencies": {
     "react": "^18.2.0",
