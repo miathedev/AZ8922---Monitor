@@ -86,7 +86,7 @@ function App() {
       const reader = new SerialReader(
         (level) => {
           setCurrentLevel(level);
-          setHistory((prev) => [...prev.slice(-119), level]); // Keep last 120 readings
+          setHistory((prev) => [...prev.slice(-59), level]); // Keep last 60s (~1 reading/s)
         },
         () => setIsConnected(true),
         () => setIsConnected(false)
@@ -187,10 +187,6 @@ function App() {
             <div className="stat-item">
               <span className="stat-label">Threshold:</span>
               <span className="stat-value">{threshold} dB</span>
-            </div>
-            <div className="stat-item">
-              <span className="stat-label">Readings:</span>
-              <span className="stat-value">{history.length}</span>
             </div>
           </section>
 

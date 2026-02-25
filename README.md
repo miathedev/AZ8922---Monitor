@@ -4,13 +4,13 @@ A web-based application for monitoring sound levels with the AZ8922 digital soun
 
 ## Features
 
-- 📊 Real-time sound level monitoring
-- 🔔 Customizable alarm threshold with hold function
-- 🎵 Audio alert when threshold is exceeded
-- 📈 Visual history chart
-- 🌐 Works in modern web browsers (Chrome, Edge, Opera)
-- 📱 Responsive mobile-friendly design
-- 🚀 Deploy to GitHub Pages
+- Real-time sound level monitoring
+- Customizable alarm threshold with hold function
+- Audio alert when threshold is exceeded
+- Visual history chart
+- Works in modern web browsers (Chrome, Edge, Opera)
+- Responsive mobile-friendly design
+- Deploy to GitHub Pages
 
 ## Requirements
 
