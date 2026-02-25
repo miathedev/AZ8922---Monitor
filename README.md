@@ -2,15 +2,16 @@
 
 A web-based application for monitoring sound levels with the AZ8922 digital sound level meter.
 
+**Live: [miathedev.github.io/AZ8922---Monitor](https://miathedev.github.io/AZ8922---Monitor/)**
+
 ## Features
 
 - Real-time sound level monitoring
 - Customizable alarm threshold with hold function
 - Audio alert when threshold is exceeded
-- Visual history chart
+- Visual history chart (last 60 seconds)
 - Works in modern web browsers (Chrome, Edge, Opera)
 - Responsive mobile-friendly design
-- Deploy to GitHub Pages
 
 ## Requirements
 
@@ -19,11 +20,9 @@ A web-based application for monitoring sound levels with the AZ8922 digital soun
 
 ## Getting Started
 
-### Development
-
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/AZ8922---Monitor.git
+   git clone https://github.com/miathedev/AZ8922---Monitor.git
    cd AZ8922---Monitor
    ```
 
@@ -37,18 +36,7 @@ A web-based application for monitoring sound levels with the AZ8922 digital soun
    npm start
    ```
 
-4. Open [http://localhost:3000](http://localhost:3000) in your browser
-
-### Deployment to GitHub Pages
-
-1. Update the `homepage` URL in `package.json` with your repository URL
-
-2. Deploy:
-   ```bash
-   npm run deploy
-   ```
-
-3. Access your app at: `https://yourusername.github.io/AZ8922---Monitor`
+4. Open [http://localhost:5173](http://localhost:5173) in your browser
 
 ## How to Use
 
@@ -65,7 +53,8 @@ A web-based application for monitoring sound levels with the AZ8922 digital soun
 
 - **Communication**: Web Serial API (2400 baud)
 - **Format**: `N:XXX.X\r\n` (e.g., `N:045.5\r\n`)
-- **UI Framework**: React 18
+- **UI Framework**: React 19
+- **Build tool**: Vite
 - **Audio**: Web Audio API for alarm sound
 - **Charts**: SVG-based visualization
 
@@ -83,12 +72,8 @@ A web-based application for monitoring sound levels with the AZ8922 digital soun
 npm run build
 ```
 
-This creates an optimized build in the `build/` directory.
+Output goes to `dist/`. Deployed automatically to GitHub Pages on every push to `main`.
 
 ## License
 
 MIT
-
-## Support
-
-For issues or feature requests, please open an issue on GitHub.
