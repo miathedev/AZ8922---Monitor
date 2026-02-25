@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './App.css';
 import SerialReader from './services/SerialReader';
 
@@ -24,27 +24,7 @@ function App() {
     return () => document.removeEventListener('click', initAudio);
   }, []);
 
-  // Check alarm condition
-  useEffect(() => {
-    if (currentLevel >= threshold && !alarmTriggered) {
-      triggerAlarm();
-    }
-  }, [currentLevel, threshold, alarmTriggered]);
-
-  const triggerAlarm = () => {
-    setAlarmTriggered(true);
-    setAlarmActive(true);
-    
-    // Start continuous alarm sound
-    if (alarmIntervalRef.current) clearInterval(alarmIntervalRef.current);
-    alarmIntervalRef.current = setInterval(() => {
-      playAlarmSound();
-    }, 2000); // Repeat every 2 seconds
-    
-    playAlarmSound(); // Play immediately
-  };
-
-  const playAlarmSound = () => {
+  const playAlarmSound = useCallback(() => {
     if (!audioContextRef.current) return;
 
     const ctx = audioContextRef.current;
@@ -74,7 +54,26 @@ function App() {
       oscillator.start(startTime);
       oscillator.stop(startTime + beepDuration);
     }
-  };
+  }, []);
+
+  const triggerAlarm = useCallback(() => {
+    setAlarmTriggered(true);
+    setAlarmActive(true);
+
+    if (alarmIntervalRef.current) clearInterval(alarmIntervalRef.current);
+    alarmIntervalRef.current = setInterval(() => {
+      playAlarmSound();
+    }, 2000);
+
+    playAlarmSound();
+  }, [playAlarmSound]);
+
+  // Check alarm condition
+  useEffect(() => {
+    if (currentLevel >= threshold && !alarmTriggered) {
+      triggerAlarm();
+    }
+  }, [currentLevel, threshold, alarmTriggered, triggerAlarm]);
 
   const handleConnect = async () => {
     try {
